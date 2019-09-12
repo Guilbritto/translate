@@ -32,18 +32,17 @@ export const Header = styled.header`
 `;
 export const Body = styled.main`
   display: flex;
-  max-width: 1098px;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px auto 0px;
-  padding: 30px 0;
-  background: #fefefe;
-  border-radius: 4px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
-export const List = styled.ul`
-  list-style: none;
-  width: 100%;
-  div {
+export const Main = styled.div`
+  min-width: 720px;
+  width: 720px;
+  background: #fefefe;
+  margin: 30px 0;
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px 0px #999;
+  /* div {
     display: flex;
     align-items: center;
 
@@ -83,7 +82,7 @@ export const List = styled.ul`
     border-style: none;
     border: 1px solid rgba(0, 0, 0, 0.3);
     width: ;
-  }
+  } */
 `;
 
 export const Flag = styled(ReactCountryFlag).attrs({
@@ -98,4 +97,100 @@ export const Flag = styled(ReactCountryFlag).attrs({
   },
 })``;
 
-export const Star = styled.div``;
+export const SideList = styled.aside`
+  background: #fefefe;
+
+  height: 94vh;
+  width: 350px;
+  list-style: none;
+  box-shadow: 0px 1px 3px #999;
+  display: flex;
+  flex-direction: column;
+  ul {
+    overflow: auto;
+  }
+  li {
+    height: 30px;
+    white-space: nowrap;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 0px 4px 0px #666;
+    }
+
+    &:active {
+      box-shadow: 0px -2px 4px 0px #666;
+    }
+
+    & + li {
+      border-top: 1px solid #eee;
+    }
+  }
+`;
+export const Chat = styled.div``;
+
+export const SearchInput = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -1px 0px 1px #666;
+  margin-bottom: 10px;
+  svg {
+    position: absolute;
+    left: 17px;
+    width: 22px;
+    color: #666;
+    font-weight: 600;
+  }
+  input {
+    padding-left: 27px !important;
+    margin: 10px;
+    border-style: none;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    box-shadow: 0px 1px 1px #eee;
+    height: 30px;
+    padding: 10px;
+    font-size: 14px;
+    width: 95%;
+    color: #666;
+    font-weight: 600;
+  }
+`;
+
+export const MainHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid #eee;
+  svg {
+    width: 50px;
+    cursor: pointer;
+  }
+  h1 {
+    color: #666;
+  }
+`;
+
+export const MainBody = styled.div`
+  padding: 30px;
+  div {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  textarea {
+    padding: 15px;
+    font-size: 14px;
+    color: #666;
+    width: 95%;
+    height: 168px;
+    border-style: none;
+    border: 1px solid #eee;
+    border-radius: 4px;
+  }
+`;

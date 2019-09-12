@@ -7993,11 +7993,6 @@ react-country-flag@^1.0.2:
   resolved "https://registry.yarnpkg.com/react-country-flag/-/react-country-flag-1.0.2.tgz#c15390c7a032ecc595dd89754b523c81a60c595f"
   integrity sha512-VaH8vYGe27pLd4xIcWN+KLSs7W6Dm7hwNzXyisPzg+FFfX+q/vChE5J5fT0PEmIcjCxuRIBuVQL4DPuuMvRrvA==
 
-react-country-flags@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/react-country-flags/-/react-country-flags-2.2.3.tgz#a86cdf39ae992c9bdab03adfc4934bf87196cff1"
-  integrity sha512-cErU1GBDQ4sErCgY3XGrR2ahIJtLmRf3MysMR7Ytb6MbA2IUB6Q/rwGTUEhhej8+Pqchb5+DgUECWbvD8FnD3g==
-
 react-dev-utils@^9.0.3:
   version "9.0.3"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-9.0.3.tgz#7607455587abb84599451460eb37cef0b684131a"

@@ -4,13 +4,22 @@ import Word from '../model/Word';
 
 class TranslateController {
   async index(req, res) {
+    const { page = 1 } = req.query;
     const teste = await Translate.findAll({
+      attributes: ['favorite', 'translated'],
       include: [
         {
           model: Word,
-          as: 'words',
+          attributes: ['key', 'value'],
+        },
+        {
+          model: Languages,
+          attributes: ['lang'],
+          where: { lang: req.params.lang },
         },
       ],
+      offset: (page - 1) * 50,
+      limit: 50,
     });
 
     return res.json(teste);
