@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ReactCountryFlag from 'react-country-flag';
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
 `;
 export const Logo = styled.div`
   display: flex;
@@ -34,6 +34,7 @@ export const Body = styled.main`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 export const Main = styled.div`
   min-width: 720px;
@@ -42,50 +43,9 @@ export const Main = styled.div`
   margin: 30px 0;
   border-radius: 8px;
   box-shadow: 0px 0px 4px 0px #999;
-  /* div {
-    display: flex;
-    align-items: center;
-
-    svg {
-      cursor: pointer;
-      margin-right: 10px;
-      border-radius: 50%;
-      border: 1px solid #eee;
-      &:hover {
-        box-shadow: 0px 0px 6px 0px #eee;
-      }
-      &:active {
-        box-shadow: 0px 0px 6px 2px #eee;
-      }
-    }
-  }
-  li {
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    flex: 1;
-    margin-right: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
-
-    & + li {
-      border-top: 1px solid #eee;
-    }
-  }
-  input {
-    outline: none;
-    border-radius: 4px;
-    padding: 5px;
-    font-size: 12px;
-    border-style: none;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    width: ;
-  } */
 `;
 
-export const Flag = styled(ReactCountryFlag).attrs({
+export const Flag = styled(ReactCountryFlag).attrs(props => ({
   styleProps: {
     width: '22px',
     height: '22px',
@@ -94,13 +54,15 @@ export const Flag = styled(ReactCountryFlag).attrs({
     marginLeft: '10px',
     backgroundSize: 'cover',
     border: '1px solid rgba(0,0,0,0.5)',
+    onClick: props.onClick,
   },
-})``;
+}))``;
 
 export const SideList = styled.aside`
   background: #fefefe;
-
-  height: 94vh;
+  border-radius: 4px;
+  height: calc(100vh - 80px);
+  margin: 15px 0 15px 10px;
   width: 350px;
   list-style: none;
   box-shadow: 0px 1px 3px #999;
@@ -108,24 +70,6 @@ export const SideList = styled.aside`
   flex-direction: column;
   ul {
     overflow: auto;
-  }
-  li {
-    height: 30px;
-    white-space: nowrap;
-    padding: 5px;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0px 0px 4px 0px #666;
-    }
-
-    &:active {
-      box-shadow: 0px -2px 4px 0px #666;
-    }
-
-    & + li {
-      border-top: 1px solid #eee;
-    }
   }
 `;
 export const Chat = styled.div``;
@@ -135,11 +79,11 @@ export const SearchInput = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -1px 0px 1px #666;
-  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+
   svg {
     position: absolute;
-    left: 17px;
+    left: 27px;
     width: 22px;
     color: #666;
     font-weight: 600;
@@ -182,6 +126,9 @@ export const MainBody = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    div {
+      margin: 0;
+    }
   }
   textarea {
     padding: 15px;
@@ -192,5 +139,51 @@ export const MainBody = styled.div`
     border-style: none;
     border: 1px solid #eee;
     border-radius: 4px;
+  }
+`;
+export const MainFooter = styled.div`
+  border-top: 1px solid #ccc;
+  padding: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  button {
+    border-style: none;
+    height: 35px;
+    width: 100px;
+    background: #0aa31d;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #fff;
+    outline: none;
+    border: 2px solid #068c16;
+    &:active {
+      opacity: 0.5;
+    }
+  }
+`;
+export const SideItem = styled.li`
+  height: 30px;
+  white-space: nowrap;
+  padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+
+  ${props =>
+    props.active &&
+    css`
+      background: #333;
+      color: #fff;
+      font-weight: bold;
+    `};
+
+  &:hover {
+    box-shadow: 0px 0px 4px 0px #666;
+  }
+
+  & + li {
+    border-top: 1px solid #eee;
   }
 `;

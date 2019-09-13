@@ -18,34 +18,54 @@ class TranslateController {
           where: { lang: req.params.lang },
         },
       ],
-      offset: (page - 1) * 50,
-      limit: 50,
     });
 
     return res.json(teste);
   }
 
+  async show(req, res) {
+    const { keyWord } = req.params;
+    const { lang } = req.query;
+
+    const response = await Translate.findOne({
+      attributes: ['id', 'favorite', 'translated'],
+      limit: 50,
+      include: [
+        {
+          attributes: ['key', 'value'],
+          model: Word,
+          where: {
+            key: keyWord,
+          },
+        },
+        {
+          attributes: [],
+          model: Languages,
+          where: {
+            lang: lang,
+          },
+        },
+      ],
+    });
+
+    return res.json(response);
+  }
+
   async update(req, res) {
-    const { wordList } = req.body;
+    const wordList = req.body;
     const returnWord = [];
+
     if (!wordList) {
       return res.status(401).json({ error: 'Word List not sent' });
     }
 
-    wordList.map(async element => {
-      const word = await Translate.findOne({
-        where: { key: element.key, lang: element.lang },
-      });
-
-      if (word) {
-        await word.update(element);
-        returnWord.push({ value: element.value, flag: true });
-      } else {
-        returnWord.push({ value: element.value, flag: false });
-      }
+    const response = await Translate.update(wordList, {
+      where: {
+        id: wordList.id,
+      },
     });
 
-    return res.json({ message: 'Tradução concluída!', wordList: returnWord });
+    return res.json(response);
   }
 }
 
