@@ -25,6 +25,7 @@ module.exports = {
         references: {
           model: 'words',
           key: 'id',
+          onDelete: 'CASCADE',
         },
         allowNull: false,
       },

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { Container } from '../../components/Container';
+import { Button } from '../../components/Button';
+
 import {
-  Container,
   Header,
   Body,
   Logo,
@@ -75,7 +77,8 @@ export default class Home extends Component {
   };
 
   async handleSelectWord(e) {
-    const response = await api.get(`/translate/${e}?lang=br`);
+    const url_param = encodeURIComponent(e);
+    const response = await api.get(`/translate/${url_param}?lang=br`);
     const { words } = this.state;
 
     const index = words.findIndex(element => e === element.key);
@@ -95,7 +98,7 @@ export default class Home extends Component {
   }
 
   handleSearch = async e => {
-    if (e.target.value.length > 4 || e.target.value.length === 0) {
+    if (e.target.value.length >= 3 || e.target.value.length === 0) {
       const response = await api.get(`/word/${e.target.value}`);
       this.setState({
         words: response.data,
@@ -113,11 +116,17 @@ export default class Home extends Component {
     if (e.key === 'Tab') {
       e.preventDefault();
       const { words } = this.state;
-      const active = words.findIndex(element => {
+      let active = words.findIndex(element => {
         if (element.active === true) {
           return element;
         }
       });
+      console.log(words.length);
+      console.log(active + 1);
+      if (active + 1 > words.length - 1) {
+        active = -1;
+      }
+      console.log(`active: ${active}`);
       this.handleSelectWord(words[active + 1].key);
     } else {
       console.log(e);
@@ -138,6 +147,7 @@ export default class Home extends Component {
             <img src={defaultLogo} />
             <span>PZM Translate</span>
           </Logo>
+
           <ToastContainer />
         </Header>
         <Body>
@@ -209,7 +219,12 @@ export default class Home extends Component {
                 />
               </MainBody>
               <MainFooter>
-                <button onClick={this.handleSubmit}> Salvar </button>
+                <Button danger onClick={this.handleDelete}>
+                  Remover
+                </Button>
+                <Button success onClick={this.handleSubmit}>
+                  Salvar
+                </Button>
               </MainFooter>
             </Main>
           )}

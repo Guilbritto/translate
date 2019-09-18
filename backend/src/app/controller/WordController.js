@@ -3,7 +3,7 @@ import { Op } from 'sequelize';
 
 class WordController {
   async show(req, res) {
-    const word = req.params.word;
+    const word = decodeURIComponent(req.params.word);
     const response = await Word.findAll({
       attributes: ['key', 'value'],
       where: { value: { [Op.iLike]: `%${word}%` } },

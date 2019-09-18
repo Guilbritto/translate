@@ -1,9 +1,6 @@
 import styled, { css } from 'styled-components';
 import ReactCountryFlag from 'react-country-flag';
 
-export const Container = styled.div`
-  height: 100vh;
-`;
 export const Logo = styled.div`
   display: flex;
   flex-direction: row;
@@ -147,21 +144,6 @@ export const MainFooter = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  button {
-    border-style: none;
-    height: 35px;
-    width: 100px;
-    background: #0aa31d;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #fff;
-    outline: none;
-    border: 2px solid #068c16;
-    &:active {
-      opacity: 0.5;
-    }
-  }
 `;
 export const SideItem = styled.li`
   height: 30px;
