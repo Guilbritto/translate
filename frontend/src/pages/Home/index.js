@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Container } from '../../components/Container';
 import { Button } from '../../components/Button';
 
 import {
-  Header,
   Body,
-  Logo,
   Main,
   MainHeader,
   MainBody,
@@ -17,7 +15,6 @@ import {
   MainFooter,
   SideItem,
 } from './styles';
-import defaultLogo from '../../images/logo-default.svg';
 import { MdStar, MdStarBorder, MdSearch } from 'react-icons/md';
 import api from '../../services/api';
 export default class Home extends Component {
@@ -142,14 +139,6 @@ export default class Home extends Component {
 
     return (
       <Container onKeyDown={this.handleShortCut}>
-        <Header>
-          <Logo>
-            <img src={defaultLogo} />
-            <span>PZM Translate</span>
-          </Logo>
-
-          <ToastContainer />
-        </Header>
         <Body>
           <SideList>
             <SearchInput>

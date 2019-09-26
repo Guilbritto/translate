@@ -2,36 +2,24 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('translates', {
+    return queryInterface.createTable('users', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      translated: {
+      name: {
         type: Sequelize.STRING,
-        allowNull: true,
-      },
-      word_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'words',
-          key: 'id',
-          onDelete: 'CASCADE',
-        },
         allowNull: false,
       },
-      languages_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'languages',
-          key: 'id',
-        },
+      email: {
+        type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
-      favorite: {
-        type: Sequelize.BOOLEAN,
+      password_hash: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       created_at: {
@@ -46,6 +34,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('translates');
+    return queryInterface.dropTable('users');
   },
 };

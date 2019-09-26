@@ -2,38 +2,39 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('translates', {
+    /*
+      Add altering commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
+    */
+    return queryInterface.createTable('users_projects', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      translated: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      word_id: {
+      user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'words',
+          model: 'users',
           key: 'id',
           onDelete: 'CASCADE',
         },
         allowNull: false,
       },
-      languages_id: {
+      project_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'languages',
+          model: 'projects',
           key: 'id',
+          onDelete: 'CASCADE',
         },
         allowNull: false,
       },
-      favorite: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-      },
+
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -46,6 +47,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('translates');
+    return queryInterface.dropTable('users_projects');
   },
 };
