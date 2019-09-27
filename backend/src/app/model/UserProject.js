@@ -1,6 +1,6 @@
-import Sequelize, { Model } from 'sequelize';
+import { Model } from 'sequelize';
 
-class Project extends Model {
+class UserProject extends Model {
   static init(sequelize) {
     super.init(
       {},
@@ -10,6 +10,11 @@ class Project extends Model {
     );
     return this;
   }
+
+  associate(models) {
+    this.belongsTo(models.User, { foreignKey: 'user_id' });
+    this.belongsTo(models.Project, { foreignKey: 'project_id' });
+  }
 }
 
-export default Project;
+export default UserProject;

@@ -20,9 +20,8 @@ class User extends Model {
     return this;
   }
 
-  associate(models) {
-    this.hasMany(models.Projects);
-    this.belongsTo(models.UserProjects);
+  checkPassword(password) {
+    return bcrypt.compare(password, this.password_hash);
   }
 }
 

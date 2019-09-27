@@ -4,7 +4,7 @@ class Project extends Model {
   static init(sequelize) {
     super.init(
       {
-        nome: Sequelize.STRING,
+        name: Sequelize.STRING,
       },
       {
         sequelize,
@@ -13,9 +13,8 @@ class Project extends Model {
     return this;
   }
 
-  associate(models) {
-    this.belongsTo(model.User);
-    this.belongsTo(mode.UserProject);
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: 'owner' });
   }
 }
 
