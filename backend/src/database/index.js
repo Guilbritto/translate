@@ -7,9 +7,9 @@ import Languages from '../app/model/Languages';
 import Word from '../app/model/Word';
 import User from '../app/model/User';
 import Project from '../app/model/Project';
-import UserProject from '../app/model/UserProject';
+import UsersProject from '../app/model/UsersProject';
 
-const models = [Translate, Languages, Word, User, Project, UserProject];
+const models = [Translate, Languages, Word, User, Project, UsersProject];
 
 class Database {
   constructor() {

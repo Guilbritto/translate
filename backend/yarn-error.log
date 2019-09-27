@@ -1,20 +1,20 @@
 Arguments: 
-  /home/guilherme/.nvm/versions/node/v10.16.3/bin/node /mnt/c/Program Files (x86)/Yarn/bin/yarn.js add -D sqlite3
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add factory-girl faker -D
 
 PATH: 
-  /home/guilherme/.nvm/versions/node/v10.16.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/Docker/Docker/Resources/bin:/mnt/c/app/dev05/product/11.2.0/client_1/bin:/mnt/c/Python27/:/mnt/c/Python27/Scripts:/mnt/c/Program Files/Python36/Scripts/:/mnt/c/Program Files/Python36/:/mnt/c/app/dev05/product/11.2.0/client_1:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files (x86)/Yarn/bin/:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Java/jdk1.8.0_221/bin:/mnt/c/php7:/mnt/c/ProgramData/ComposerSetup/bin:/mnt/c/Program Files (x86)/WinMerge:/mnt/c/Users/dev05/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dev05/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Bandizip/:/mnt/c/app/dev05/product/11.2.0/client_1/bin:/mnt/c/Users/dev05/AppData/Local/Yarn/bin:/mnt/c/Users/dev05/AppData/Roaming/npm:/mnt/c/Android/Sdk/platform-tools:/mnt/c/Android/Sdk/tools:/mnt/c/Users/dev05/AppData/Roaming/Composer/vendor/bin:/mnt/c/Program Files/heroku/bin
+  C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\app\dev05\product\11.2.0\client_1\bin;C:\Python27\;C:\Python27\Scripts;C:\Program Files\Python36\Scripts\;C:\Program Files\Python36\;C:\app\dev05\product\11.2.0\client_1;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Program Files\Java\jdk1.8.0_221\bin;C:\php7;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\WinMerge;C:\Users\dev05\AppData\Local\Microsoft\WindowsApps;C:\Users\dev05\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Bandizip\;C:\Users\dev05\AppData\Local\Yarn\bin;C:\Users\dev05\AppData\Roaming\npm;C:\Android\Sdk\platform-tools;C:\Android\Sdk\tools;C:\Users\dev05\AppData\Roaming\Composer\vendor\bin;C:\Program Files\heroku\bin
 
 Yarn version: 
   1.17.3
 
 Node version: 
-  10.16.3
+  12.10.0
 
 Platform: 
-  linux x64
+  win32 x64
 
 Trace: 
-  Error: EIO: i/o error, unlink '/mnt/c/Users/dev05/Documents/Projetos/PzmTranslate/backend/node_modules/sqlite3/lib/binding/node-v72-win32-x64/node_sqlite3.node'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\dev05\Documents\Projetos\PzmTranslate\backend\node_modules\sqlite3\lib\binding\node-v64-linux-x64\node_sqlite3.node'
 
 npm manifest: 
   {
@@ -24,9 +24,9 @@ npm manifest:
     "license": "MIT",
     "scripts": {
       "dev": "nodemon src/server.js",
-      "pretest": "set NODE_ENV=test sequelize db:migrate",
-      "test": "set NODE_ENV=test jest",
-      "posttest": "set NODE_ENV=test jest sequelize db:migrate:undo:all"
+      "pretest": "NODE_ENV=test sequelize db:migrate",
+      "test": "NODE_ENV=test jest",
+      "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
     },
     "dependencies": {
       "bcryptjs": "^2.4.3",

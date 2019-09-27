@@ -2,6 +2,7 @@ import User from '../../src/app/model/User';
 import request from 'supertest';
 import app from '../../src/app';
 import truncate from '../util/truncate';
+import factory from '../factories';
 
 describe('Project', () => {
   beforeEach(async () => {
@@ -9,26 +10,21 @@ describe('Project', () => {
   });
 
   it('Should be able to Create a Project', async () => {
-    await User.create({
-      name: 'Guilherme Brito',
-      email: 'teste@login.com',
-      password: 'Padrao998',
-    });
+    const userFactory = await factory.create('User');
+    const project = await factory.attrs('Project');
 
     const user = await request(app)
       .post('/sessions')
       .send({
-        email: 'teste@login.com',
-        password: 'Padrao998',
+        email: userFactory.dataValues.email,
+        password: userFactory.dataValues.password,
       });
-
     const response = await request(app)
       .post('/projects')
+      .set('Authorization', 'Bearer ' + user.body.token)
       .send({
-        name: 'Projeto Teste',
-      })
-      .set({ Authorization: user.body.token });
-
+        name: project.name,
+      });
     expect(response.body).toHaveProperty('id');
   });
 });

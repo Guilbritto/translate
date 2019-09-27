@@ -24,7 +24,7 @@ class SessionController {
         email: user.email,
       },
       token: jwt.sign({ id: user.id }, process.env.APP_SECRET, {
-        expiresIn: process.env.SESSION_EXPIRE,
+        expiresIn: '7d',
       }),
     });
   }
