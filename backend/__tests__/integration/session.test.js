@@ -5,10 +5,6 @@ import truncate from '../util/truncate';
 import factory from '../factories';
 
 describe('Session', () => {
-  beforeEach(async () => {
-    await truncate();
-  });
-
   it('Should be able to Login', async () => {
     const user = await factory.create('User');
     const response = await request(app)

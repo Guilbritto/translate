@@ -4,10 +4,6 @@ import truncate from '../util/truncate';
 import factory from '../factories';
 
 describe('User', () => {
-  beforeEach(async () => {
-    await truncate();
-  });
-
   it('should be able to register', async () => {
     const user = await factory.attrs('User');
 

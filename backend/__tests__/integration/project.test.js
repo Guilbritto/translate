@@ -1,14 +1,9 @@
-import User from '../../src/app/model/User';
 import request from 'supertest';
 import app from '../../src/app';
 import truncate from '../util/truncate';
 import factory from '../factories';
 
 describe('Project', () => {
-  beforeEach(async () => {
-    await truncate();
-  });
-
   it('Should be able to Create a Project', async () => {
     const userFactory = await factory.create('User');
     const project = await factory.attrs('Project');
