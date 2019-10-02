@@ -41,10 +41,36 @@ describe('Project', () => {
       .post('/projects/invite')
       .set('Authorization', 'Bearer ' + user.body.token)
       .send({
-        project_id: project.body.id,
-        user_id: invited.id,
+        project_id: project.dataValues.id,
+        user_id: invited.dataValues.id,
       });
 
     expect(response.body).toHaveProperty('id');
+  });
+
+  it('Should be able to list a project with users into that project', async () => {
+    const owner = await factory.create('User');
+    const invited = await factory.create('User');
+    const project = await factory.create('Project', {
+      owner: owner.id,
+    });
+
+    await factory.create('UsersProject', {
+      user_id: invited.id,
+      project_id: project.id,
+    });
+
+    const user = await request(app)
+      .post('/sessions')
+      .send({
+        email: owner.email,
+        password: owner.password,
+      });
+
+    const response = await request(app)
+      .get('/projects/users/' + project.id)
+      .set('Authorization', 'Bearer ' + user.body.token);
+
+    expect(response.body).toHaveProperty('Project');
   });
 });

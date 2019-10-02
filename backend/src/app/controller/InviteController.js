@@ -15,7 +15,7 @@ class InviteController {
         .json({ error: 'You can only invite to your own projects' });
     }
 
-    const userProject = await userProject.findOne({
+    const userProject = await UsersProject.findOne({
       where: {
         project_id,
         user_id,

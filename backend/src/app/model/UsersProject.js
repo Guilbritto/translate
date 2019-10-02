@@ -11,7 +11,7 @@ class UsersProject extends Model {
     return this;
   }
 
-  associate(models) {
+  static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id' });
     this.belongsTo(models.Project, { foreignKey: 'project_id' });
   }

@@ -8,6 +8,7 @@ import WordController from './app/controller/WordController';
 import UserController from './app/controller/UserController';
 import SessionController from './app/controller/SessionController';
 import ProjectController from './app/controller/ProjectController';
+import InviteController from './app/controller/InviteController';
 import multerConfig from './config/multer';
 import multer from 'multer';
 const routes = new Router();
@@ -19,6 +20,8 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
 
 routes.post('/projects', ProjectController.store);
+routes.get('/projects/users/:id', ProjectController.show);
+routes.post('/projects/invite', InviteController.store);
 
 routes.put('/translate', TranslateController.update);
 
