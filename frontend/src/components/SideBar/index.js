@@ -26,7 +26,7 @@ export default function SideBar(props) {
           </SideItem>
         ))}
       </Container>
-      <Hamburger onClick={handleVisible}>
+      <Hamburger onClick={handleVisible} overlay={props.overlay}>
         {visible ? <MdChevronLeft size={25} /> : <MdChevronRight size={25} />}
       </Hamburger>
     </>

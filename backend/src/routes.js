@@ -21,6 +21,7 @@ routes.use(authMiddleware);
 
 routes.post('/projects', ProjectController.store);
 routes.get('/projects/users/:id', ProjectController.show);
+routes.get('/projects', ProjectController.index);
 routes.post('/projects/invite', InviteController.store);
 
 routes.put('/translate', TranslateController.update);

@@ -52,7 +52,7 @@ export const Hamburger = styled.div`
   cursor: pointer;
   margin-left: 5px;
   margin-right: 5px;
-
+  position: ${props => (props.overlay ? 'absolute' : 'relative')}
   &:hover {
     box-shadow: 0px 0px 4px #999;
   }

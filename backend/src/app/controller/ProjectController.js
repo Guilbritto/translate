@@ -4,6 +4,16 @@ import UsersProject from '../model/UsersProject';
 import * as Yup from 'yup';
 
 class ProjectController {
+  async index(req, res) {
+    const projects = await Project.findAll({
+      where: {
+        owner: req.userId,
+      },
+    });
+
+    res.json(projects);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -63,7 +73,6 @@ class ProjectController {
     });
 
     project.Users = userProject;
-    console.log(project.dataValues);
     return res.json({
       Project: { ...project.dataValues },
       Users: [...userProject],
