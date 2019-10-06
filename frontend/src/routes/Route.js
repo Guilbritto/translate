@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { store } from '~/store';
 import DefaultLayout from '../pages/_layouts/default';
+import AuthtLayout from '../pages/_layouts/auth';
 
 export default function RouteWrapper({
   component: Component,
@@ -19,7 +20,7 @@ export default function RouteWrapper({
   if (signed && !isPrivate) {
     return <Redirect to="/home" />;
   }
-  const Layout = DefaultLayout;
+  const Layout = signed ? DefaultLayout : AuthtLayout;
   return (
     <Route
       {...rest}

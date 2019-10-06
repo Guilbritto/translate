@@ -1,28 +1,22 @@
-import styled from 'styled-components';
+import React from 'react';
 
-export const Header = styled.header`
-  width: 100%;
-  height: 50px;
-  background: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
-  box-shadow: 0px 1px 3px #999;
-`;
+import { HeaderContainer, Logo, UserInfo } from './styles';
+import logo from '~/assets/logo-default.svg';
+import { store } from '~/store';
 
-export const Logo = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  img {
-    width: 60px;
-  }
-
-  span {
-    font-weight: bold;
-    font-size: 16px;
-  }
-`;
+export default function Header() {
+  const user = store.getState().user.profile;
+  return (
+    <HeaderContainer>
+      <Logo>
+        <img src={logo} alt="PZM Enterprise" />
+        <span>
+          <span>PZM</span>Tools
+        </span>
+      </Logo>
+      <UserInfo>
+        <span>{user.name}</span>
+      </UserInfo>
+    </HeaderContainer>
+  );
+}

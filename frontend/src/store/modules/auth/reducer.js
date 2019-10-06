@@ -13,6 +13,11 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.token = action.payload.token;
         draft.signed = true;
       });
+    case '@auth/SIGN_FAILURE':
+      return produce(state, draft => {
+        draft.token = action.payload.token;
+        draft.signed = true;
+      });
     default:
       return state;
   }

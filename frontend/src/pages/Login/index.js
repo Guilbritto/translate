@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { Container, LoginBox } from './styles';
 import logo from '~/assets/logo-default.svg';
-import api from '~/services/api';
 import { signInRequest } from '~/store/modules/auth/actions';
 
 const schema = Yup.object().shape({

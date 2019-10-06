@@ -4,21 +4,25 @@ import { signInSuccess, signFailure } from './actions';
 
 import api from '~/services/api';
 import history from '~/services/history';
+import { toast } from 'react-toastify';
 
 export function* signIn({ payload }) {
-  const { email, password } = payload;
-  const response = yield call(api.post, '/sessions', {
-    email,
-    password,
-  });
+  try {
+    const { email, password } = payload;
 
-  if (response.status === 200) {
+    const response = yield call(api.post, '/sessions', {
+      email,
+      password,
+    });
+
     const { token, user } = response.data;
 
     yield put(signInSuccess(token, user));
+
     history.push('/home');
-  } else {
-    yield put(signFailure());
+  } catch (err) {
+    console.log('cheguei aqui');
+    toast.error('Falha na autenticação, verifique seus dados');
   }
 }
 
