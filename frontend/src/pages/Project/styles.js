@@ -8,15 +8,18 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
 export const Main = styled.div`
   min-width: 720px;
   width: 980px;
   height: 600px;
   background: #fefefe;
-  position: relative;
   margin: 30px 0;
   border-radius: 8px;
   box-shadow: 0px 0px 4px 0px #999;
+  @media (min-height: 657px) {
+    height: 540px;
+  }
 `;
 
 export const MainHeader = styled.div`
@@ -31,6 +34,22 @@ export const MainHeader = styled.div`
   }
   h1 {
     color: #666;
+  }
+
+  button {
+    border-style: none;
+    padding: 0px 15px 0px 0px;
+    height: 40px;
+    width: 100px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #0aa31d;
+    color: #fff;
+    transition: background 0.2s;
   }
 `;
 

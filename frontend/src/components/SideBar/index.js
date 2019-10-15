@@ -5,6 +5,7 @@ import { FaClipboardList } from 'react-icons/fa';
 
 export default function SideBar(props) {
   const [visible, setVisible] = useState(false);
+
   const [sideItems, setSideItems] = useState([]);
   const menu = [
     { Icon: MdHome, label: 'Home', to: '/home' },
@@ -18,7 +19,7 @@ export default function SideBar(props) {
     <>
       <Container visible={visible} overlay={props.overlay}>
         {menu.map(items => (
-          <SideItem to={items.to}>
+          <SideItem key={items.to} to={items.to}>
             <Icon>
               <items.Icon size={25} />
             </Icon>

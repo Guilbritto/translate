@@ -1,9 +1,8 @@
 import React from 'react';
-
+import { MdDelete, MdModeEdit } from 'react-icons/md';
 import { TableWapper, TableContent } from './styles';
 
 export default function Table({ children, data }) {
-  console.log(data);
   return (
     <TableWapper>
       <TableContent>
@@ -11,8 +10,13 @@ export default function Table({ children, data }) {
         <tbody>
           {data.map(project => (
             <tr key={project.id}>
-              <td>{project.name}</td>
-              <td></td>
+              <td>
+                <div>{project.name}</div>
+                <div>
+                  <MdDelete size={30} />
+                  <MdModeEdit size={30} />
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>

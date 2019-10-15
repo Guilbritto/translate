@@ -3,6 +3,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import GlobalStyle from '~/styles/global';
+import '~/styles/animate.css';
 import '~/config/reactotronConfig';
 import Routes from '~/routes';
 import history from '~/services/history';

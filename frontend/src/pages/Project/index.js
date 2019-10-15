@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-
-import { Main, MainHeader, Container, MainBody, MainFooter } from './styles';
+import { MdAdd } from 'react-icons/md';
+import { Main, MainHeader, Container, MainBody } from './styles';
 import Table from '~/components/Table';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '~/components/Modal';
 import api from '~/services/api';
 import { store } from 'store';
-
 export default function Project() {
   const [projects, setProjects] = useState([]);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     async function loadProjects() {
@@ -19,21 +20,35 @@ export default function Project() {
     loadProjects();
   }, []);
 
+  function handleVisible() {
+    setVisible(!visible);
+  }
   return (
     <Container>
+      {visible && (
+        <Modal visible={visible} changeVisibility={handleVisible}>
+          <ModalHeader>
+            <span>Cabeçalho</span>
+          </ModalHeader>
+          <ModalBody>Corpo</ModalBody>
+          <ModalFooter>teste</ModalFooter>
+        </Modal>
+      )}
+
       <Main>
-        <MainHeader>Projetos</MainHeader>
+        <MainHeader>
+          Lista de Projetos
+          <button type="button" onClick={handleVisible}>
+            <MdAdd size={25} /> Novo
+          </button>
+        </MainHeader>
         <MainBody>
           <Table data={projects}>
             <thead>
-              <tr>
-                <th>Nome do Projeto</th>
-                <th></th>
-              </tr>
+              <tr></tr>
             </thead>
           </Table>
         </MainBody>
-        <MainFooter></MainFooter>
       </Main>
     </Container>
   );

@@ -21,7 +21,6 @@ export function* signIn({ payload }) {
 
     history.push('/home');
   } catch (err) {
-    console.log('cheguei aqui');
     toast.error('Falha na autenticação, verifique seus dados');
   }
 }
